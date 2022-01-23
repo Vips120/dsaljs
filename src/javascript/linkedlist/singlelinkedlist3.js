@@ -10,6 +10,8 @@ function LList() {
     this.pop = pop;
     this.shift = shift;
     this.unshift = unshift;
+    this.getIndex = getIndex;
+    this.setIndex = setIndex;
     this.length = 0;
 };
 
@@ -80,8 +82,40 @@ function getIndex(index) {
    current = current.next;
    counter++
  };
+ console.log(current);
  return current;
 };
+
+ function setIndex(index,val) {
+  let currentIndex = this.getIndex(index);
+  console.log(currentIndex);
+  if(currentIndex) {
+    currentIndex.element = val;
+    return true;
+  } else {
+    return false;
+  }
+
+ };
+
+
+ function insert(index,val) {
+  if(this.length < 0 || index > this.length) {return false;}
+  if(index === 0) {
+return !!this.unshift(val);
+ }
+ if(index === this.length) {
+   return !! this.push(val);
+ }
+
+ let newNode = new Node(val);
+ let prevNode = getIndex(index-1);
+ let temp = prevNode.next;
+ prevNode.next = newNode;
+ newNode.next = temp;
+ this.length++;
+return true;
+ }
 let list = new LList();
 console.log(list.push(40));
 // console.log(list.shift());
