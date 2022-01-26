@@ -100,7 +100,7 @@ function getIndex(index) {
 
 
  function insert(index,val) {
-  if(this.length < 0 || index > this.length) {return false;}
+  if(index < 0 || index > this.length) {return false;}
   if(index === 0) {
 return !!this.unshift(val);
  }
@@ -115,7 +115,11 @@ return !!this.unshift(val);
  newNode.next = temp;
  this.length++;
 return true;
- }
+ };
+
+
+
+
 let list = new LList();
 console.log(list.push(40));
 // console.log(list.shift());
