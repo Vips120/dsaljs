@@ -9,6 +9,8 @@ function Singlelist() {
     this.length = 0;
     this.push = push;
     this.display = display;
+    this.unshift = unshift;
+    this.insert = insert;
 };
 
 function push(val) {
@@ -36,3 +38,36 @@ console.log(currentNode.element);
 };
 console.log('toal node created ' + nodeCount);
 };
+
+
+function unshift(val) {
+let newNode = new Node(val);
+let currentNode = this.head;
+if(this.length === 0) {this.head = newNode; 
+  this.tails = newNode;
+  this.length++}
+newNode.next = currentNode;
+this.head = newNode;
+this.length++;
+return this;
+};
+
+function insert(index, val) {
+if(index > this.length) {return undefined;}
+else {
+  let currentNode = this.head;
+  let newNode = new Node(val);
+  let count = 0
+  while(count < index) {
+     currentNode = currentNode.next;
+     count++;
+  }
+  newNode.next = currentNode.next;
+  currentNode.next = newNode;
+  this.length++;
+  return this;
+}
+
+};
+
+
