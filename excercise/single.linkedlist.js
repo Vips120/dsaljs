@@ -120,3 +120,7 @@ function RemovIndex(index) {
  this.length--;
 return this;
 };
+
+shift()
+lastIndex();
+byIndex();
